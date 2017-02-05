@@ -1,27 +1,23 @@
-(function(){
-           
-    var app = angular.module('githubViewer',[]); 
-    
-    var mainController = function ($scope, $http){
+(function () {
 
-        $http.get("https://api.github.com/users/alanrussodev")
-            .then(function (response){
-                $scope.user = response.data;
-            });
+    var app = angular.module('githubViewer', []);
 
-        $scope.message = "Hello, Pluralsight!";
+    var mainController = function ($scope, $http) {
 
-        // var person = {
-        //     firstName : "Scott",
-        //     lastName : "Allen",
-        //     imageSrc : "http://odetocode.com/Images/scott_allen_2.jpg"
-        // } 
+        $scope.username = "angular";
+        $scope.message = "githubViewer";
 
-        // $scope.message = "Hello, Pluralsight!";
-        // $scope.person = person;
-    }
-    
-    app.controller("mainController",["$scope","$http",mainController]);
+        $scope.search = function (username) {
+            $http.get("https://api.github.com/users/" + username + "/repos")
+                .then(function (response) {
+                    $scope.repos = response.data;
+                });
+        };
+
+        $scope.search($scope.username);
+        $scope.repoSortOrder = "-stargazers_count";
+    };
+
+    app.controller("mainController", ["$scope", "$http", mainController]);
 
 }());
-
