@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="githubViewer">
+    <head>
+        <title>Video 1 - AngularJs</title>
+    </head>
+    <body ng-controller="mainController">
+        <h1>{{message}}</h1>
+        <div>
+            <div>Name : {{user.name}}</div>
+            <div>Location : {{user.location}}</div>
+            <div>
+                <img ng-src="{{user.avatar_url}}" alt="" title="{{user.name}}">
+            </div>
+
+        </div>
+        <!--<script src="js/abstraction-function.js"></script>-->
+        <!--<script src="js/module-function.js"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular.min.js"></script>
+        <script src="js/controller/mainController.js"></script>        
+    </body>
+</html>
